@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  shopify-storefront-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shopify-storefront-api
+    env_file:
+      - .env
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+
+  cache:
+    image: redis:7.4
+    expose:
+      - 6379
+
+
